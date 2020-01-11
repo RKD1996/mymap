@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef ,EventEmitter} from '@angular/core';
 import { LocationDataService } from '../location-data.service'
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     let locations = e
       console.log('location -- ',locations)
 
-    let stateLoc = this.locaDoc.getCityData(this.state).subscribe<any>(res => {
+    let stateLoc = this.locaDoc.getCityData(this.state).subscribe((res :any) => {
       console.log('res -- ',res)
         let map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   getStatesDetails () {
-    this.ajax.get('https://indian-cities-api-nocbegfhqg.now.sh/cities').subscribe<any>( res => {
+    this.ajax.get('https://indian-cities-api-nocbegfhqg.now.sh/cities').subscribe( (res :any) => {
       this.stateCity = this.mapStateToCity(res);
       this.loader = false
     })
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     this.state = e;
     this.city = 'Select City';
     this.cityData =[]
-    this.ajax.get('https://indian-cities-api-nocbegfhqg.now.sh/cities?State_like=' + e).subscribe<any>((res) => {
+    this.ajax.get('https://indian-cities-api-nocbegfhqg.now.sh/cities?State_like=' + e).subscribe((res : any) => {
       this.cityData = this.locaDoc.getselectStateCitiesDetail(res)
       setTimeout(() => {
         this.markMultipleCityOnMap(this.cityData)
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
   selecCity (e) {
     this.loader = true
     this.city = e;
-    this.locaDoc.getCityData(e).subscribe<any>(res => {
+    this.locaDoc.getCityData(e).subscribe((res:any) => {
       this.markMultipleCityOnMap([[e , res.results[0].geometry.location.lat,res.results[0].geometry.location.lng,1]]);
     })
     this.loader = false

@@ -25,7 +25,8 @@ export class LocationDataService {
     let vm = this;
     let ind = 1
     state.forEach(function (k) {
-      vm.getCityData(k.City).subscribe<any>(res => {
+      vm.getCityData(k.City).subscribe((res : any) => {
+        console.log('=====> ',res);
         if (res && res.results!='undefined' && res.results[0] && res.results[0].geometry.location && res.results[0].geometry) {
           let data= [k.City , res.results[0].geometry.location.lat,res.results[0].geometry.location.lng,ind++] ;
           vm.state.push(data);
