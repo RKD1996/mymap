@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
 import { LocationDataService } from '../location-data.service'
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,10 +20,8 @@ export class HomeComponent implements OnInit {
   num: number = 1;
   map: google.maps.Map;
 
-  constructor (
-    private ajax: HttpClient,
-    private locaDoc: LocationDataService
-  ) { }
+  constructor (  private ajax: HttpClient,  private locaDoc: LocationDataService) {
+   }
 
   ngOnInit () {
     this.loader = true;
