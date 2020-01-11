@@ -6,10 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
+import { LocationDataService } from './location-data.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyBaS4VcxMUdoM5BXHSQsO2TVoAaYwAXVTs'
     })
   ],
-  providers: [],
+  providers: [LocationDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
