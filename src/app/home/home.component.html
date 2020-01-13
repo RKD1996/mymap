@@ -4,8 +4,29 @@
 
 <!-- <div class="content"><h3>stuff goes in here!</h3></div> -->
 
+  <div class="mymap">
+    <div class="state">
+      <h4 class="selected-state">{{state}}</h4>
+      <div class="state-list">
+        <button ngbDropdownItem (click)="getselectStateCitiesDetails($event.target.innerHTML)" *ngFor="let i of stateCity | keyvalue">{{i.key}}</button>
+      </div>
+    </div>
+    <div class="city">
+      <h4 class="selected-city">{{city}}</h4>
+      <div class="city-list-and-map">
+        <div class="city-list">
+          <button ngbDropdownItem (click)="selecCity($event.target.innerHTML)" *ngFor="let i of cityData">{{i[0]}}</button>
+        </div>
+        <div class="search-result">
+          <div #mapContainer id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div ngbDropdown class="d-inline-block state-search">
+
+
+  <!-- <div ngbDropdown class="d-inline-block state-search">
     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{state}}</button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button ngbDropdownItem (click)="getselectStateCitiesDetails($event.target.innerHTML)" *ngFor="let i of stateCity | keyvalue">{{i.key}}</button>
@@ -17,10 +38,8 @@
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button ngbDropdownItem (click)="selecCity($event.target.innerHTML)" *ngFor="let i of cityData">{{i[0]}}</button>
     </div>
-  </div>
+  </div> -->
 
-  <div class="search-result">
-    <div #mapContainer id="map"></div>
-  </div>
+
 
 </div>

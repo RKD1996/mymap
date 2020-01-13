@@ -30,10 +30,8 @@ export class HomeComponent implements OnInit {
   markMultipleCityOnMap(e){
     this.loader = true
     let locations = e
-      console.log('location -- ',locations)
 
     let stateLoc = this.locaDoc.getCityData(this.state).subscribe((res :any) => {
-      console.log('res -- ',res)
         let map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
           center: new google.maps.LatLng(res.results[0].geometry.location.lat,res.results[0].geometry.location.lng),
